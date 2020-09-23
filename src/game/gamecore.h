@@ -234,6 +234,9 @@ public:
 	int m_JumpedTotal;
 	int m_Jumps;
 
+	//vec2 m_LowestPos;
+	//vec2 m_HighestPos;
+
 	int m_Direction;
 	int m_Angle;
 	CNetObj_PlayerInput m_Input;

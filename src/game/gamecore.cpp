@@ -97,6 +97,8 @@ void CCharacterCore::Reset()
 	m_HookedPlayer = -1;
 	m_Jumped = 0;
 	m_JumpedTotal = 0;
+	//m_LowestPos = vec2(0, -INT_MAX);
+	//m_HighestPos = vec2(0, INT_MAX);
 	m_Jumps = 2;
 	m_TriggeredEvents = 0;
 	m_Hook = true;
@@ -212,6 +214,22 @@ void CCharacterCore::Tick(bool UseInput)
 	if(m_Direction == 0)
 		m_Vel.x *= Friction;
 
+	/*if (m_Vel.x > MaxSpeed * 2 && m_Pos.y < m_HighestPos.y)
+	{
+		m_HighestPos.y = m_Pos.y;
+	}
+	if (m_Pos.y > m_LowestPos.y) 
+	{
+		m_LowestPos.y = m_Pos.y;
+	}
+	float PerfectJump = (m_HighestPos.y + (m_LowestPos.y - m_HighestPos.y) / 2) + 30;
+	if ((m_Vel.x > MaxSpeed * 2) && (!(Grounded) && !(m_Jumped & 2)) && (m_Pos.y > PerfectJump))
+	{
+		m_TriggeredEvents |= COREEVENT_AIR_JUMP;
+		m_Vel.y = -m_pWorld->m_Tuning[g_Config.m_ClDummy].m_AirJumpImpulse;
+		m_Jumped |= 3;
+		m_JumpedTotal++;
+	}*/
 	// handle jumping
 	// 1 bit = to keep track if a jump has been made on this input (player is holding space bar)
 	// 2 bit = to keep track if a air-jump has been made (tee gets dark feet)
